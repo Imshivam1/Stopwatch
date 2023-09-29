@@ -1,0 +1,73 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: monospace;
+}
+ 
+.container-whole {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-image: url(https://images.pexels.com/photos/1581692/pexels-photo-1581692.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
+}
+#watch-frame{
+    border-style: solid;
+    border-color: purple;
+    border-width: 5px;
+    background-image: url(https://images.pexels.com/photos/1581692/pexels-photo-1581692.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
+}
+ 
+h1 {
+    color: transparent;
+    background-image: url(https://images.pexels.com/photos/1209843/pexels-photo-1209843.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
+    background-clip: text;
+    font-size: 60px;
+    background-size: cover;
+    text-align: center;
+    -webkit-background-clip: text;
+}
+ 
+.digit {
+    font-size: 150px;
+    color: #fff;
+}
+ 
+.txt {
+    font-size: 30px;
+    color: #fffcd6;
+}
+ 
+#buttons {
+    margin-top: 50px;
+}
+ 
+.btn {
+    width: 100px;
+    padding: 10px 15px;
+    margin: 0px 90px;
+    align-items: center;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 4px;
+    border-top-left-radius: 4px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: 0.5s;
+    color: white;
+    font-weight: 500;
+}
+ 
+#start {
+    background-color: green;
+}
+ 
+#stop {
+    background-color: red;
+}
+ 
+#reset {
+    background-color: blue;
+}
