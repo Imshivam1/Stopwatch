@@ -1,26 +1,23 @@
 let startBtn = document.getElementById('start');
 let stopBtn = document.getElementById('stop');
 let resetBtn = document.getElementById('reset');
-
-let timer = null;
-let startTime = 0;
-let isRunning = false;
-
+ 
+let hour = 00;
+let minute = 00;
+let second = 00;
+let count = 00;
+ 
 startBtn.addEventListener('click', function () {
-    if (!isRunning) {
-        isRunning = true;
-        startTime = Date.now() - (hour * 3600000 + minute * 60000 + second * 1000 + count * 10);
-        requestAnimationFrame(updateTime);
-    }
+    timer = true;
+    stopWatch();
 });
-
+ 
 stopBtn.addEventListener('click', function () {
-    isRunning = false;
-    cancelAnimationFrame(timer);
+    timer = false;
 });
-
+ 
 resetBtn.addEventListener('click', function () {
-    isRunning = false;
+    timer = false;
     hour = 0;
     minute = 0;
     second = 0;
@@ -30,22 +27,52 @@ resetBtn.addEventListener('click', function () {
     document.getElementById('sec').innerHTML = "00";
     document.getElementById('count').innerHTML = "00";
 });
-
-function updateTime() {
-    if (isRunning) {
-        const currentTime = Date.now();
-        const elapsedTime = currentTime - startTime;
-
-        hour = Math.floor(elapsedTime / 3600000);
-        minute = Math.floor((elapsedTime % 3600000) / 60000);
-        second = Math.floor((elapsedTime % 60000) / 1000);
-        count = Math.floor((elapsedTime % 1000) / 10);
-
-        document.getElementById('hr').innerHTML = hour.toString().padStart(2, '0');
-        document.getElementById('min').innerHTML = minute.toString().padStart(2, '0');
-        document.getElementById('sec').innerHTML = second.toString().padStart(2, '0');
-        document.getElementById('count').innerHTML = count.toString().padStart(2, '0');
-
-        timer = requestAnimationFrame(updateTime);
+ 
+function stopWatch() {
+    if (timer) {
+        count++;
+ 
+        if (count == 100) {
+            second++;
+            count = 0;
+        }
+ 
+        if (second == 60) {
+            minute++;
+            second = 0;
+        }
+ 
+        if (minute == 60) {
+            hour++;
+            minute = 0;
+            second = 0;
+        }
+ 
+        let hrStr = hour;
+        let minStr = minute;
+        let secStr = second;
+        let countStr = count;
+ 
+        if (hour < 10) {
+            hrStr = "0" + hrStr;
+        }
+ 
+        if (minute < 10) {
+            minStr = "0" + minStr;
+        }
+ 
+        if (second < 10) {
+            secStr = "0" + secStr;
+        }
+ 
+        if (count < 10) {
+            countStr = "0" + countStr;
+        }
+ 
+        document.getElementById('hr').innerHTML = hrStr;
+        document.getElementById('min').innerHTML = minStr;
+        document.getElementById('sec').innerHTML = secStr;
+        document.getElementById('count').innerHTML = countStr;
+        setTimeout(stopWatch, 10);
     }
 }
